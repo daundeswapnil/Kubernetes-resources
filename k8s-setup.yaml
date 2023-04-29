@@ -1,0 +1,43 @@
+# write down commands to install a k8s cluster on amazon linux 2
+
+# 1. Update the installed packages and package cache on your instance.
+sudo yum update -y
+# 1. Install docker
+sudo yum install docker -y
+
+# 2. Start docker service
+sudo systemctl start docker
+
+# 3. start docker on boot
+sudo systemctl enable docker
+
+# 4. Add ec2-user to docker group
+sudo usermod -a -G docker ec2-user
+
+# 5. Install kubectl
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.26.2/2023-03-17/bin/linux/amd64/kubectl
+
+
+# 6. Make the kubectl binary executable.
+chmod +x ./kubectl
+
+# 8. Verify kubectl is installed
+kubectl version --client
+
+# 9. Move the kubectl executable to /usr/local/bin.
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+# 10. Install minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
+# 11. Make the minikube binary executable.and move it to /usr/local/bin.
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+# 12. Verify minikube is installed correctly
+minikube version
+
+# 13. Start minikube
+minikube start --driver=docker
+
+# 14. Verify kubectl is installed
+kubectl version --client
