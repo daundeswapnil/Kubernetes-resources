@@ -1,5 +1,7 @@
-
+Links:
 https://medium.com/@HoussemDellai/rbac-with-kubernetes-in-minikube-4deed658ea7b
+https://docs.bitnami.com/tutorials/configure-rbac-in-your-kubernetes-cluster/
+
 1. Create a client certificate
 We’ll be creating a key and certificate sign request (CSR) needed to create the certificate. Let’s create a directory where to save the certificates. I’ll call it cert:
 
